@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Our Changing Planet – WebQuest</title>
+<style>
+:root{--bg:#050b1a;--card:rgba(14,30,60,.62);--ink:#e8f6ff;--mut:#8fb2cc;--ac:#00e5ff;--ac2:#b86bff;--line:rgba(0,229,255,.28);--bad:#ff4d6d;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme='light']{--bg:#eaf4ff;--card:rgba(255,255,255,.8);--ink:#0b1f3a;--mut:#47627e;--ac:#0077b6;--ac2:#7b2ff7;--line:rgba(0,119,182,.3);color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:relative;background:linear-gradient(135deg,#0b6e57,#12a37f 55%,#ff8a3d);color:#fff;padding:40px 20px 32px;text-align:center}
+header h1{margin:0;font-size:clamp(30px,6vw,50px)}
+header p{margin:8px auto 0;max-width:600px;opacity:.95}
+.globe{font-size:60px;display:inline-block;animation:spin 9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#theme{position:absolute;right:14px;top:calc(12px + env(safe-area-inset-top,0px));background:rgba(255,255,255,.2);border:0;color:#fff;border-radius:999px;padding:8px 12px;cursor:pointer;font-size:16px}
+nav{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line);display:flex;gap:6px;overflow-x:auto;padding:10px 12px;padding-top:calc(10px + env(safe-area-inset-top,0px))}
+nav button{flex:none;border:1px solid var(--line);background:transparent;color:var(--ink);padding:8px 14px;border-radius:999px;cursor:pointer;font:inherit;font-size:14px}
+nav button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+main{max-width:900px;margin:0 auto;padding:24px 16px 60px}
+section{display:none}
+section.on{display:block;animation:fade .35s}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
+h2{font-size:30px;margin:0 0 6px}
+h3{margin:18px 0 8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin:14px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:16px 0}
+.stat{background:linear-gradient(135deg,var(--ac),#0b6e57);color:#fff;border-radius:18px;padding:18px;text-align:center}
+.stat b{display:block;font-size:38px;line-height:1.1}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;cursor:pointer;text-align:left;color:var(--ink);font:inherit;transition:.2s;min-height:96px}
+.tile:hover{transform:translateY(-3px);border-color:var(--ac)}
+.tile b{display:block;font-size:28px}
+.tile span{display:none;color:var(--mut);font-size:14px;margin-top:6px}
+.tile.open span{display:block}
+.tile.sel{border-color:var(--ac2);box-shadow:0 0 0 2px var(--ac2)}
+.btn{display:inline-block;background:var(--ac2);color:#fff;border:0;border-radius:12px;padding:10px 18px;cursor:pointer;font:inherit;font-weight:600;text-decoration:none}
+.btn.alt{background:var(--ac)}
+.step{padding:10px 0;border-bottom:1px dashed var(--line)}
+.step label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.step input{width:20px;height:20px;margin-top:4px;accent-color:var(--ac)}
+.step details{margin:4px 0 0 30px;color:var(--mut);font-size:15px}
+.step summary{cursor:pointer;color:var(--ac)}
+.bar{height:12px;background:var(--line);border-radius:9px;overflow:hidden;margin:10px 0}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--ac),var(--ac2));transition:.3s}
+a{color:var(--ac)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 14px;cursor:pointer;font:inherit}
+.chip.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.res{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line)}
+.res em{font-style:normal;font-size:26px}
+.res small{display:block;color:var(--mut)}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th,td{border:1px solid var(--line);padding:8px;text-align:left}
+th{background:var(--ac);color:#fff}
+.wrap{overflow-x:auto}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--ink);font:inherit;cursor:pointer}
+.opt.ok{background:#0e9470;color:#fff;border-color:#0e9470}
+.opt.no{background:var(--bad);color:#fff;border-color:var(--bad)}
+input[type=text],input[type=password],select{padding:9px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;max-width:100%}
+input[type=range]{width:100%;accent-color:var(--ac2)}
+.thermo{display:flex;gap:16px;align-items:center}
+.tube{width:28px;height:140px;background:var(--line);border-radius:14px;position:relative;overflow:hidden;flex:none}
+.tube i{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,#ff8a3d,#d64545);height:20%;transition:.3s}
+.flip{perspective:600px;height:130px;cursor:pointer;border:0;background:none;padding:0;font:inherit;color:inherit}
+.flip div{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.flip.f div{transform:rotateY(180deg)}
+.flip p{position:absolute;inset:0;margin:0;padding:14px;border-radius:16px;backface-visibility:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
+.flip .a{background:var(--ac);color:#fff;font-weight:700;font-size:18px}
+.flip .b{background:var(--card);border:1px solid var(--line);transform:rotateY(180deg);font-size:14px}
+.cert{border:4px double var(--ac2);border-radius:18px;padding:28px;text-align:center;background:var(--card);margin:14px 0}
+.cert h3{font-size:26px;margin:0}
+.cert b{font-size:30px;color:var(--ac)}
+.hide{display:none}
+.big{font-size:20px;font-weight:700}
+footer{text-align:center;color:var(--mut);padding:20px;font-size:14px}
+@media print{header,nav,.np,footer{display:none!important}section{display:none!important}#conclusion{display:block!important}}
+#sky{position:fixed;inset:0;z-index:-1;width:100%;height:100%}
+body{font-family:'Segoe UI',system-ui,sans-serif}
+header{background:linear-gradient(135deg,rgba(0,229,255,.12),rgba(184,107,255,.18));border-bottom:1px solid var(--line);color:var(--ink);backdrop-filter:blur(8px);padding:30px 20px 20px}
+header h1{letter-spacing:.06em;text-transform:uppercase;background:linear-gradient(90deg,#00e5ff,#b86bff,#ff8a3d);-webkit-background-clip:text;background-clip:text;color:transparent}
+.globe{display:block;width:92px;height:92px;border-radius:50%;margin:0 auto 10px;font-size:0;position:relative;overflow:hidden;animation:none;background:radial-gradient(circle at 30% 30%,#7be0ff,#1565c0 45%,#0a2a5e 75%);box-shadow:0 0 40px #00e5ff88,inset -14px -10px 24px #000a}
+.globe::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 30px 18px at 35% 40%,#3ddc84 60%,#0000 62%),radial-gradient(ellipse 22px 30px at 68% 62%,#3ddc84 60%,#0000 62%);animation:drift 8s linear infinite alternate}
+@keyframes drift{from{transform:translateX(-24px)}to{transform:translateX(24px)}}
+nav{background:var(--card);backdrop-filter:blur(12px)}
+nav button.on{color:#001018;box-shadow:0 0 14px var(--ac)}
+.card,.tile,.chip{backdrop-filter:blur(10px)}
+.card{box-shadow:0 0 28px rgba(0,229,255,.07)}
+.stat{background:linear-gradient(135deg,rgba(0,229,255,.2),rgba(184,107,255,.28));border:1px solid var(--line);color:var(--ink)}
+.stat b{color:var(--ac);text-shadow:0 0 16px var(--ac)}
+.btn{background:linear-gradient(90deg,var(--ac2),#ff4fd8);box-shadow:0 0 16px rgba(184,107,255,.5)}
+.btn.alt{background:linear-gradient(90deg,#00b8d4,var(--ac));color:#001018;box-shadow:0 0 16px rgba(0,229,255,.45)}
+th{color:#001018}
+.tile:hover{box-shadow:0 0 18px var(--ac)}
+h2{letter-spacing:.03em;color:var(--ac)}
+.flip .a{background:linear-gradient(135deg,#00b8d4,#7b2ff7)}
+.cert{border-color:var(--ac)}
+#hud{max-width:420px;margin:14px auto 0;font-size:14px}
+#hud .bar{height:10px;margin:4px 0}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:linear-gradient(90deg,var(--ac),var(--ac2));color:#001018;font-weight:700;padding:10px 18px;border-radius:999px;opacity:0;transition:.4s;z-index:20;pointer-events:none}
+#toast.show{opacity:1}
+.city{width:100%;height:auto;border-radius:14px;border:1px solid var(--line);display:block}
+.city g,#smog{transition:opacity .6s}
+.turb{transform-origin:0 0;animation:spin 3s linear infinite}
+.vid{display:flex;gap:14px;align-items:center;background:linear-gradient(135deg,rgba(184,107,255,.25),rgba(0,229,255,.12));border-radius:14px;padding:14px;margin:8px 0;border:1px solid var(--line)}
+.vid .pl{flex:none;width:92px;height:56px;border-radius:10px;background:#000a;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;box-shadow:0 0 14px var(--ac2)}
+.sw{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+</style>
+</head>
+<body>
+<canvas id='sky'></canvas>
+<header>
+  <button id="theme" aria-label="Switch theme">🌓</button>
+  <div class='globe'></div>
+  <h1>Our Changing Planet</h1>
+  <p>An interactive WebQuest for grades 8–9: find out why Earth is changing and what you can do about it.</p>
+  <div id='hud'><span id='lv'></span><div class='bar'><i id='xb'></i></div></div><div id='toast'></div>
+</header>
+<nav id="nav"></nav>
+<main>
+
+<section id="introduction">
+  <h2>1. Introduction</h2>
+  <p>Glaciers are melting, seas are rising and summers are getting hotter. Scientists around the world agree that our planet is changing fast, and that human activity is the main reason. The good news: we also know many ways to slow the change down.</p>
+  <div class="card"><b>Your role:</b> You are a Young Climate Expert invited to your school’s Green Summit. In this quest you will learn the science, explore the evidence and design a plan for your own city.</div>
+  <div class="stats">
+    <div class="stat"><b><span class="cnt" data-to="1.1" data-dec="1">0</span> °C</b>warmer than in the late 1800s</div>
+    <div class="stat"><b><span class="cnt" data-to="420">0</span> ppm</b>CO₂ in the air today (about 280 before industry)</div>
+    <div class="stat"><b><span class="cnt" data-to="8">0</span> billion</b>people share one planet</div>
+  </div>
+  <h3>🔎 Explore the signs of change <small style="font-weight:400;color:var(--mut)">(click a card)</small></h3>
+  <div class="grid" id="facts"></div>
+  <h3>🌡️ Try it: the greenhouse effect</h3>
+  <div class="card thermo">
+    <div class="tube"><i id="tfill"></i></div>
+    <div style="flex:1"><p style="margin:0 0 8px">Move the slider to change the amount of greenhouse gases in the air.</p>
+    <input type="range" id="gas" min="0" max="100" value="30">
+    <p id="gmsg" style="margin:8px 0 0;font-weight:600"></p></div>
+  </div>
+  <h3>📘 Climate words to know <small style="font-weight:400;color:var(--mut)">(flip the cards)</small></h3>
+  <div class="grid" id="vocab"></div>
+  <div class="card"><b>💡 Did you know?</b> <span id="dyk">Click the button for a fact.</span><br><br><button class="btn alt" id="dykBtn">Show another fact</button></div>
+  <p><button class="btn" onclick="go('task')">Start the mission →</button></p>
+</section>
+
+<section id="task">
+  <h2>2. Task</h2>
+  <div class="card">
+    <p><b>Mission:</b> Work in a group of 3–4. Research climate change and create a <b>Climate Action Plan</b> for your city. Your plan must include:</p>
+    <ul>
+      <li>2 main <b>causes</b> of climate change</li>
+      <li>3 <b>effects</b> on nature and people</li>
+      <li>5 realistic <b>solutions</b> for your city or school</li>
+      <li>1 personal <b>pledge</b> from every team member</li>
+    </ul>
+  </div>
+  <h3>👥 Choose your role</h3>
+  <div class="grid" id="roles"></div>
+  <p id="rolemsg" style="font-weight:600"></p>
+  <h3>🎨 Choose your final product</h3>
+  <div class="grid" id="prods"></div>
+  <p id="prodmsg" style="font-weight:600"></p>
+  <p><button class="btn alt" onclick="go('process')">See the steps →</button></p>
+</section>
+
+<section id="process">
+  <h2>3. Process</h2>
+  <p>Follow the seven steps. Tick each one when it is done and open “Tips” for help.</p>
+  <div class="bar"><i id="pbar"></i></div>
+  <p id="pmsg" style="font-weight:600"></p>
+  <div class="card" id="steps"></div>
+  <h3>🧮 Step 3 tool: your Eco-score</h3>
+  <div class="card" id="eco"></div>
+  <h3>🏙️ Step 4 tool: build the city of 2050</h3>
+  <div class='card'><p style='margin-top:0'>Switch on solutions and watch the future city change.</p>
+  <svg class='city' viewBox='0 0 600 220' aria-label='City of 2050'><defs><linearGradient id='sk' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#1b0f3a'/><stop offset='1' stop-color='#ff8a3d'/></linearGradient></defs><rect width='600' height='220' fill='url(#sk)'/><circle cx='500' cy='50' r='22' fill='#fff6b0' opacity='.9'/><g fill='#0a1226' stroke='#00e5ff' stroke-width='1'><rect x='40' y='90' width='60' height='110'/><rect x='110' y='60' width='50' height='140'/><rect x='170' y='100' width='70' height='100'/><rect x='250' y='40' width='55' height='160'/><rect x='315' y='85' width='65' height='115'/><rect x='390' y='70' width='50' height='130'/></g><rect y='200' width='600' height='20' fill='#06101f'/><g id='a_solar' opacity='0' fill='#2fa8ff'><rect x='44' y='84' width='52' height='6'/><rect x='114' y='54' width='42' height='6'/><rect x='254' y='34' width='47' height='6'/><rect x='394' y='64' width='42' height='6'/></g><g id='a_trees' opacity='0' fill='#3ddc84'><circle cx='20' cy='190' r='14'/><circle cx='245' cy='192' r='12'/><circle cx='385' cy='192' r='12'/><circle cx='455' cy='190' r='14'/><circle cx='560' cy='188' r='16'/></g><g id='a_ev' opacity='0' fill='#00e5ff'><rect x='120' y='204' width='46' height='10' rx='4'/><rect x='300' y='204' width='46' height='10' rx='4'/></g><g id='a_rec' opacity='0' fill='#b86bff'><rect x='480' y='176' width='14' height='22'/><rect x='498' y='176' width='14' height='22'/></g><g id='a_wind' opacity='0' stroke='#fff' stroke-width='3'><line x1='540' y1='200' x2='540' y2='100'/><g transform='translate(540 100)'><g class='turb'><line x1='0' y1='0' x2='0' y2='-40'/><line x1='0' y1='0' x2='35' y2='20'/><line x1='0' y1='0' x2='-35' y2='20'/></g></g></g><rect id='smog' width='600' height='200' fill='#8a6a3a' opacity='.55'/></svg>
+  <div class='sw' id='sw'></div><p class='big' id='fc'></p></div>
+</section>
+
+<section id="resources">
+  <h2>4. Resources</h2>
+  <p>Use at least <b>two different sources</b>. Filter the list by type.</p>
+  <div class="chips" id="chips"></div>
+  <div class="card" id="reslist"></div>
+  <div class="card"><b>🔍 Research tip:</b> Prefer sites ending in .gov, .edu or .org, check the date, and compare two sources before you write a fact in your plan.</div>
+</section>
+
+<section id="evaluation">
+  <h2>5. Evaluation</h2>
+  <div class="wrap"><table>
+    <tr><th>Criteria</th><th>Excellent (4)</th><th>Good (3)</th><th>Needs work (1–2)</th></tr>
+    <tr><td>Research</td><td>Causes, effects and solutions are accurate and detailed</td><td>Mostly accurate</td><td>Missing or unclear</td></tr>
+    <tr><td>Creativity</td><td>Original and attractive design</td><td>Clear design</td><td>Plain or messy</td></tr>
+    <tr><td>Solutions</td><td>5 realistic ideas for our city</td><td>3–4 ideas</td><td>1–2 ideas</td></tr>
+    <tr><td>Teamwork</td><td>Everyone contributed</td><td>Most contributed</td><td>Unequal work</td></tr>
+    <tr><td>Language</td><td>Correct and clear English</td><td>Few mistakes</td><td>Many mistakes</td></tr>
+  </table></div>
+  <p><b>Total: 20 points.</b> 18–20 = 5 · 15–17 = 4 · 11–14 = 3</p>
+  <h3>✅ Self-assessment calculator</h3>
+  <div class="card" id="rub"></div>
+  <h3>🧠 Quiz</h3>
+  <div class="card"><div class="bar"><i id="qbar"></i></div><div id="quiz"></div></div>
+</section>
+
+<section id="conclusion">
+  <h2>6. Conclusion</h2>
+  <div class="card np">
+    <p>Congratulations! Here are the key ideas to remember:</p>
+    <ul>
+      <li>Climate change is caused mostly by greenhouse gases from burning fossil fuels, cutting forests and farming.</li>
+      <li>It affects nature and people everywhere: heat, floods, droughts, melting ice and rising seas.</li>
+      <li>Solutions exist: clean energy, saving energy, protecting forests, smarter transport and less waste.</li>
+      <li><b>Small actions together make a big difference.</b></li>
+    </ul>
+    <p>Think about it: <i>What is one habit you will change this week?</i></p>
+  </div>
+  <div class='card np'><h3 style='margin-top:0'>🎯 7-day eco challenge</h3><div id='chal'></div></div>
+  <div class="card np"><h3 style="margin-top:0">🌱 Pledge wall</h3>
+    <button class="btn" id="pledgeBtn">Give me an idea</button>
+    <p id="pledge" style="font-weight:600"></p>
+    <input type="text" id="mine" placeholder="Write your own pledge" size="30"> <button class="btn alt" id="addP">Add to wall</button>
+    <ul id="wall"></ul>
+  </div>
+  <div class="card np"><h3 style="margin-top:0">🏅 Your certificate</h3>
+    <input type="text" id="nm" placeholder="Your name"> <button class="btn alt" id="mk">Create</button></div>
+  <div class="cert hide" id="cert"><h3>Certificate of Climate Action</h3><p>This certificate is proudly awarded to</p><b id="cn"></b><p>Young Climate Expert, for completing the “Our Changing Planet” WebQuest.</p><p id="cd"></p><button class="btn np" onclick="window.print()">Print 🖨️</button></div>
+</section>
+
+<section id="teacher">
+  <h2>7. Teacher’s Page</h2>
+  <div class="card" id="lock">
+    <p>This page is for teachers. Enter the code to open it (demo code: <b>teacher</b>).</p>
+    <input id="code" type="password" placeholder="Code"> <button class="btn alt" id="unlock">Open</button>
+    <p id="lockmsg" style="color:var(--bad)"></p>
+  </div>
+  <div id="tcontent" class="hide">
+    <div class="card"><b>Learning objectives:</b> students explain the causes and effects of climate change, evaluate online sources, propose realistic solutions and work collaboratively in English.</div>
+    <div class="card"><b>Level and time:</b> grades 8–9, CEFR A2–B1. Three 45-minute lessons (or one 90-minute workshop plus homework).</div>
+    <div class="card"><b>Skills practised:</b> reading for information, note-taking, speaking and presenting, digital literacy, critical thinking, teamwork.</div>
+    <div class="card"><b>Lesson plan:</b>
+      <ol><li><b>Lesson 1:</b> Introduction page, vocabulary cards, form groups and choose roles, start research (Resources)</li>
+      <li><b>Lesson 2:</b> Finish research, use the Eco-score tool, build the Climate Action Plan</li>
+      <li><b>Lesson 3:</b> Presentations, peer feedback, quiz, self-assessment, certificates</li></ol></div>
+    <div class="card"><b>Differentiation:</b> support weaker students with the vocabulary cards and sentence starters (“One cause is…”, “This affects…”); challenge stronger students to add data from NASA or Our World in Data and to compare two solutions.</div>
+    <div class="card"><b>Assessment:</b> use the rubric on the Evaluation page for the group product, the quiz for individual knowledge and the self-assessment for reflection.</div>
+    <div class="card"><b>Tips:</b> assign roles (researcher, designer, speaker, checker); remind students to use at least two sources; check all links before the lesson; the page works on phones, tablets and computers.</div>
+    <div class="card"><b>Extension ideas:</b> a school energy audit, a class tree-planting day, a debate (“Should our city ban plastic bags?”), a letter to the mayor.</div>
+    <div class="card"><b>Quiz answer key:</b> <span id="key"></span></div>
+  </div>
+</section>
+
+</main>
+<footer>Our Changing Planet · Interactive WebQuest 🌿</footer>
+
+<script>
+function $(i){return document.getElementById(i)}
+function el(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e}
+var S=[["introduction","Introduction"],["task","Task"],["process","Process"],["resources","Resources"],["evaluation","Evaluation"],["conclusion","Conclusion"],["teacher","Teacher’s Page"]];
+var nav=$("nav");
+S.forEach(function(s,i){var b=el("button","",(i+1)+". "+s[1]);b.dataset.id=s[0];b.onclick=function(){go(s[0])};nav.appendChild(b)});
+var counted=false;
+function go(id){
+  if(!S.some(function(s){return s[0]===id}))id="introduction";
+  document.querySelectorAll("section").forEach(function(e){e.classList.toggle("on",e.id===id)});
+  nav.querySelectorAll("button").forEach(function(b){b.classList.toggle("on",b.dataset.id===id)});
+  try{history.replaceState(null,"","#"+id)}catch(e){}
+  window.scrollTo(0,0);
+  if(id==="introduction"&&!counted){counted=true;count()}
+}
+window.addEventListener("hashchange",function(){go(location.hash.slice(1))});
+function count(){document.querySelectorAll(".cnt").forEach(function(e){var to=+e.dataset.to,d=+e.dataset.dec||0,t0=null;
+  function f(t){if(!t0)t0=t;var p=Math.min((t-t0)/1200,1);e.textContent=(to*p).toFixed(d);if(p<1)requestAnimationFrame(f)}requestAnimationFrame(f)})}
+$('theme').onclick=function(){var r=document.documentElement;r.dataset.theme=r.dataset.theme==='light'?'dark':'light'};
+
+var F=[["🌡️","Rising temperatures","Earth is about 1.1 °C warmer than in the late 1800s, and the last ten years were the warmest on record."],["🧊","Melting ice","Glaciers and polar ice are shrinking, which also reduces fresh water for millions of people."],["🌊","Rising seas","Warm water expands and melting ice adds water, so coastal cities face more floods."],["🌪️","Extreme weather","Heatwaves, floods, droughts and storms are becoming more frequent or stronger."],["🪸","Ocean changes","Oceans absorb heat and CO₂. Warmer, more acidic water harms coral reefs and fish."],["🌳","Forests and wildlife","Fires, drought and lost habitat push many animals and plants toward extinction."]];
+F.forEach(function(f){var t=el("button","tile","<b>"+f[0]+"</b>"+f[1]+"<span>"+f[2]+"</span>");t.onclick=function(){t.classList.toggle("open")};$("facts").appendChild(t)});
+
+var G=["Very few greenhouse gases: Earth would be a frozen planet.","A natural level: gases keep Earth warm enough for life.","A little too much: temperatures start to rise.","Many gases trap extra heat: glaciers melt and seas rise.","Far too much: extreme heat, storms and big risks for nature and people."];
+function gas(){var v=+$("gas").value;$("tfill").style.height=(10+v*0.9)+"%";$("gmsg").textContent=G[Math.min(4,Math.floor(v/20))]}
+$("gas").oninput=gas;gas();
+
+var V=[["Greenhouse effect","Gases in the air trap heat from the Sun, like the glass of a greenhouse."],["Fossil fuels","Coal, oil and gas. Burning them releases CO₂."],["Carbon footprint","The amount of greenhouse gases caused by a person, product or activity."],["Renewable energy","Energy from sources that do not run out: sun, wind, water."],["Deforestation","Cutting down forests. Fewer trees means less CO₂ absorbed."],["Sea level rise","The increase in ocean height as water warms and ice melts."]];
+V.forEach(function(v){var b=el("button","flip","<div><p class='a'>"+v[0]+"</p><p class='b'>"+v[1]+"</p></div>");b.onclick=function(){b.classList.toggle("f")};$("vocab").appendChild(b)});
+
+var D=["Burning fossil fuels is the largest source of human greenhouse gas emissions.","Trees take in carbon dioxide as they grow.","The oceans have absorbed most of the extra heat trapped by greenhouse gases.","Solar and wind power are now among the fastest-growing energy sources.","Warmer oceans can cause coral bleaching.","Saving energy at home and school is one of the quickest ways to cut emissions."],di=0;
+$("dykBtn").onclick=function(){$("dyk").textContent=D[di++%D.length]};
+
+var R=[["🔍 Researcher","Finds facts about causes and effects and keeps a list of sources."],["🎨 Designer","Plans the layout, colours and pictures of the final product."],["🎤 Speaker","Presents the plan to the class and answers questions."],["✔️ Checker","Checks facts, spelling and the rubric before you finish."]];
+R.forEach(function(r){var t=el("button","tile","<b>"+r[0].split(" ")[0]+"</b>"+r[0].split(" ")[1]);t.onclick=function(){$("roles").querySelectorAll(".tile").forEach(function(x){x.classList.remove("sel")});t.classList.add("sel");$("rolemsg").textContent=r[0]+": "+r[1]};$("roles").appendChild(t)});
+var PR=[["🖼️","Poster","Use a big title, 3 sections (causes, effects, solutions) and one strong picture."],["📊","Presentation","Make 6–8 slides with short text, one idea per slide and a final pledge slide."],["📈","Infographic","Show numbers with icons and charts. Keep text short and clear."],["🎬","Video","Film a 2-minute news report: introduce the problem, explain causes and effects, finish with solutions."]];
+PR.forEach(function(r){var t=el("button","tile","<b>"+r[0]+"</b>"+r[1]);t.onclick=function(){$("prods").querySelectorAll(".tile").forEach(function(x){x.classList.remove("sel")});t.classList.add("sel");$("prodmsg").textContent=r[1]+": "+r[2]};$("prods").appendChild(t)});
+
+var P=[["Form your team and choose roles.","Choose a researcher, designer, speaker and checker. Agree how you will share work and when to meet."],["Watch one video from the Resources page.","Take 3 notes: one cause, one effect and one solution you hear in the video."],["Read two websites and take notes on causes and effects.","Use at least two different sources. Write short notes in your own words and save the links."],["Find 5 solutions that work in your city or school.","Think about energy, transport, waste, water and green spaces. Choose ideas that are realistic and cheap."],["Design your Climate Action Plan.","Use your chosen product (poster, presentation, infographic or video). Include 2 causes, 3 effects and 5 solutions."],["Write one personal pledge for each team member.","A good pledge is small, specific and possible this week. For example: “I will walk to school twice a week.”"],["Present your plan and give feedback to other teams.","Speak clearly, use your notes, and give each team one “star” (something good) and one “wish” (an idea to improve)."]];
+function upd(){var c=$("steps").querySelectorAll("input:checked").length;$("pbar").style.width=(c/P.length*100)+"%";$("pmsg").textContent=c===P.length?"🎉 All steps complete! Go to the Evaluation page.":c+" / "+P.length+" steps done"}
+P.forEach(function(p,i){var d=el("div","step","<label><input type='checkbox'><span><b>Step "+(i+1)+":</b> "+p[0]+"</span></label><details><summary>Tips</summary>"+p[1]+"</details>");d.querySelector("input").onchange=upd;$("steps").appendChild(d)});upd();
+
+var E=[["How do you usually get to school?",[["Walk or bike",1],["Bus",2],["Car",4]]],["How often do you eat meat?",[["Rarely",1],["Some days",2],["Every day",4]]],["Do you switch off lights and chargers?",[["Always",1],["Sometimes",2],["Rarely",4]]],["What kind of bottles and bags do you use?",[["Reusable",1],["A mix",2],["Mostly single-use",4]]]];
+E.forEach(function(q,i){var d=el("p","",q[0]+"<br>");var s=el("select");s.id="e"+i;q[1].forEach(function(o){var op=el("option","",o[0]);op.value=o[1];s.appendChild(op)});d.appendChild(s);$("eco").appendChild(d)});
+var eb=el("button","btn alt","Calculate");var eo=el("p","big");eb.onclick=function(){var t=0;E.forEach(function(q,i){t+=+$("e"+i).value});eo.textContent=t+" points – "+(t<=6?"🌿 Eco hero! Keep it up.":t<=11?"🙂 On the right way. Pick one habit to improve.":"⚠️ Big footprint. Try changing one habit this week.")+" (Fun estimate, not a scientific test.)"};
+$("eco").appendChild(eb);$("eco").appendChild(eo);
+
+var RS=[["🌐","web","NASA Climate Kids","Games, videos and simple explanations","https://climatekids.nasa.gov"],["🌐","web","NASA Climate Change","Data, graphs and evidence","https://climate.nasa.gov"],["🌐","web","NOAA Climate.gov","Maps, data stories and teaching tools","https://www.climate.gov"],["🌐","web","United Nations Climate Action","Global goals and facts","https://www.un.org/en/climatechange"],["🌐","web","National Geographic Kids","Nature and environment for young readers","https://kids.nationalgeographic.com"],["🌐","web","BBC Bitesize","School-level science and geography lessons","https://www.bbc.co.uk/bitesize"],["🎬","vid","Climate change explained for kids","Short beginner videos (YouTube search)","https://www.youtube.com/results?search_query=climate+change+explained+for+kids"],["🎬","vid","Kurzgesagt: climate change","Animated explainers (YouTube search)","https://www.youtube.com/results?search_query=Kurzgesagt+climate+change"],["🎬","vid","TED-Ed: climate change","Short lessons with animation (YouTube search)","https://www.youtube.com/results?search_query=TED-Ed+climate+change"],["🎬","vid","The greenhouse effect explained","How heat gets trapped (YouTube search)","https://www.youtube.com/results?search_query=greenhouse+effect+explained+for+kids"],["🎬","vid","Sea level rise explained","Why oceans are rising (YouTube search)","https://www.youtube.com/results?search_query=sea+level+rise+explained"],["🎬","vid","Renewable energy for kids","Solar, wind and water power (YouTube search)","https://www.youtube.com/results?search_query=renewable+energy+for+kids"],["📰","art","WWF","How climate change affects wildlife","https://www.worldwildlife.org"],["📰","art","Our World in Data","Charts about CO₂, energy and temperature","https://ourworldindata.org"],["📰","art","IPCC","Reports by the world’s top climate scientists (advanced)","https://www.ipcc.ch"],["📰","art","Earth Day","Ideas for school and community action","https://www.earthday.org"]];
+var CH=[["all","All"],["web","🌐 Websites"],["vid","🎬 Videos"],["art","📰 Articles"]];
+function showRes(k){$("chips").querySelectorAll(".chip").forEach(function(c){c.classList.toggle("on",c.dataset.k===k)});$("reslist").innerHTML="";
+  RS.filter(function(r){return k==="all"||r[1]===k}).forEach(function(r){var v=r[1]==='vid';$('reslist').appendChild(el('div','res'+(v?' vid':''),(v?"<span class='pl'>▶</span>":'<em>'+r[0]+'</em>')+"<div><a href='"+r[4]+"' target='_blank' rel='noopener'>"+(v?'Watch: ':'')+r[2]+'</a><small>'+r[3]+'</small></div>'))})}
+CH.forEach(function(c){var b=el("button","chip",c[1]);b.dataset.k=c[0];b.onclick=function(){showRes(c[0])};$("chips").appendChild(b)});showRes("all");
+
+["Research","Creativity","Solutions","Teamwork","Language"].forEach(function(n,i){var d=el("p","",n+": ");var s=el("select");s.id="r"+i;[4,3,2,1].forEach(function(v){var o=el("option","",String(v));o.value=v;s.appendChild(o)});d.appendChild(s);$("rub").appendChild(d)});
+var rb=el("button","btn alt","Calculate my grade"),ro=el("p","big");
+rb.onclick=function(){var t=0;for(var i=0;i<5;i++)t+=+$("r"+i).value;ro.textContent=t+" / 20 – "+(t>=18?"Grade 5 🏆":t>=15?"Grade 4 👏":t>=11?"Grade 3 🙂":"Keep improving 💪")};
+$("rub").appendChild(rb);$("rub").appendChild(ro);
+
+var Q=[["Which gas is the main greenhouse gas from human activity?",["Oxygen","Carbon dioxide","Nitrogen"],1],["Which is a cause of climate change?",["Planting trees","Using bicycles","Burning coal and oil"],2],["What happens when polar ice melts?",["Sea levels rise","Seas get smaller","Nothing changes"],0],["Which action helps the planet most?",["Leaving lights on","Saving energy and recycling","Using more plastic"],1],["Which of these is renewable energy?",["Coal","Solar power","Natural gas"],1],["What do trees take in from the air?",["Carbon dioxide","Gold","Smoke"],0],["What is the greenhouse effect?",["Plants growing in glass houses","Gases in the air trapping heat","A hole in the sky"],1],["What is a carbon footprint?",["The size of your shoe","The greenhouse gases caused by your activities","A footprint in the snow"],1]];
+var score=0,done=0,res=el("p","big");
+Q.forEach(function(q,qi){var d=el("div","","<p><b>"+(qi+1)+". "+q[0]+"</b></p>"),lk=false;
+  q[1].forEach(function(o,oi){var b=el("button","opt");b.textContent=o;b.onclick=function(){if(lk)return;lk=true;done++;
+    if(oi===q[2]){b.classList.add("ok");score++}else{b.classList.add("no");d.querySelectorAll(".opt")[q[2]].classList.add("ok")}
+    $("qbar").style.width=(done/Q.length*100)+"%";
+    if(done===Q.length)res.textContent="Your score: "+score+" / "+Q.length+(score===Q.length?" 🏆 Perfect!":score>=6?" 👏 Great job!":" – try again to improve!")};d.appendChild(b)});
+  $("quiz").appendChild(d)});$("quiz").appendChild(res);
+$("key").textContent=Q.map(function(q,i){return (i+1)+"-"+"ABC"[q[2]]}).join(", ");
+
+var PL=["I will turn off lights when I leave a room.","I will use a reusable bottle and bag.","I will walk or cycle for short trips.","I will plant a tree this spring.","I will sort my rubbish for recycling.","I will eat one plant-based meal each week.","I will take shorter showers."];
+$("pledgeBtn").onclick=function(){$("pledge").textContent="🌱 "+PL[Math.floor(Math.random()*PL.length)]};
+$("addP").onclick=function(){var v=$("mine").value.trim();if(!v)return;var li=el("li");li.textContent="🌱 "+v;$("wall").appendChild(li);$("mine").value=""};
+$("mk").onclick=function(){var n=$("nm").value.trim();if(!n)return;$("cn").textContent=n;$("cd").textContent=new Date().toLocaleDateString();$("cert").classList.remove("hide")};
+
+$("unlock").onclick=function(){if($("code").value.trim().toLowerCase()==="teacher"){$("lock").classList.add("hide");$("tcontent").classList.remove("hide")}else{$("lockmsg").textContent="Wrong code."}};
+
+var A=[['solar','☀️ Solar roofs'],['trees','🌳 Trees'],['ev','🚌 Electric buses'],['rec','♻️ Recycling'],['wind','💨 Wind power']],on={};
+function sim(){var n=0;A.forEach(function(a){var v=on[a[0]]?1:0;n+=v;$('a_'+a[0]).style.opacity=v});$('smog').style.opacity=.55-n*.11;$('fc').textContent='City health: '+n*20+'% – '+['Smog everywhere 😷','The air is starting to clear','Getting better!','A greener city appears 🌱','Almost perfect!','A clean, green city of 2050 🌆✨'][n]}
+A.forEach(function(a){var b=el('button','chip',a[1]);b.onclick=function(){on[a[0]]=!on[a[0]];b.classList.toggle('on');sim()};$('sw').appendChild(b)});sim();
+['Turn off lights and chargers you are not using.','Walk, cycle or take the bus once.','Use a reusable bottle and bag all day.','Eat one plant-based meal.','Sort your rubbish for recycling.','Take a 5-minute shorter shower.','Tell your family one climate fact.'].forEach(function(t,i){$('chal').appendChild(el('div','step',"<label><input type='checkbox'><span><b>Day "+(i+1)+':</b> '+t+'</span></label>'))});
+var XP=0,LV=[[0,'Cadet'],[40,'Explorer'],[90,'Scientist'],[150,'Guardian'],[220,'Planet Hero 🌍']],cur=0,seen=new WeakSet();
+function toast(m){var t=$('toast');t.textContent=m;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2200)}
+function hud(){var l=0;LV.forEach(function(v,i){if(XP>=v[0])l=i});var nx=LV[l+1];$('lv').textContent='Level '+(l+1)+': '+LV[l][1]+' · '+XP+' XP'+(nx?' / '+nx[0]:' · MAX');$('xb').style.width=(nx?(XP-LV[l][0])/(nx[0]-LV[l][0])*100:100)+'%';if(l>cur){cur=l;toast('🚀 Level up! '+LV[l][1])}}
+function gain(n){XP+=n;hud()}
+document.addEventListener('click',function(e){var t=e.target.closest('.tile,.flip,.chip,.btn,.opt,nav button');if(!t||seen.has(t))return;seen.add(t);gain(t.classList.contains('opt')?(t.classList.contains('ok')?10:1):2)});
+document.addEventListener('change',function(e){if(e.target.type==='checkbox'&&e.target.checked&&!seen.has(e.target)){seen.add(e.target);gain(10)}});
+hud();
+(function(){var c=$('sky'),x=c.getContext('2d'),W,H,s=[],t=0;function rs(){W=c.width=innerWidth;H=c.height=innerHeight;s=[];for(var i=0;i<130;i++)s.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.3,v:Math.random()*.25+.05})}
+rs();addEventListener('resize',rs);
+function f(){t+=.004;x.clearRect(0,0,W,H);x.fillStyle='#fff';s.forEach(function(p){p.y+=p.v;if(p.y>H){p.y=0;p.x=Math.random()*W}x.globalAlpha=.4+.4*Math.sin(t*20+p.x);x.beginPath();x.arc(p.x,p.y,p.r,0,6.3);x.fill()});
+x.globalAlpha=.3;x.strokeStyle='#00e5ff';var cx=W*.86,cy=H*.24,R=Math.min(W,H)*.13,k;for(k=0;k<6;k++){x.beginPath();x.ellipse(cx,cy,R*Math.abs(Math.cos(t+k*.52))+.5,R,0,0,6.3);x.stroke()}for(k=-2;k<=2;k++){var d=k*R/3;x.beginPath();x.ellipse(cx,cy+d,Math.sqrt(R*R-d*d),R*.12,0,0,6.3);x.stroke()}requestAnimationFrame(f)}f()})();
+go(location.hash.slice(1));
+</script>
+</body>
+</html>
