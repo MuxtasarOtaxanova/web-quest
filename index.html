@@ -106,6 +106,60 @@ h2{letter-spacing:.03em;color:var(--ac)}
 .vid{display:flex;gap:14px;align-items:center;background:linear-gradient(135deg,rgba(184,107,255,.25),rgba(0,229,255,.12));border-radius:14px;padding:14px;margin:8px 0;border:1px solid var(--line)}
 .vid .pl{flex:none;width:92px;height:56px;border-radius:10px;background:#000a;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;box-shadow:0 0 14px var(--ac2)}
 .sw{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+
+/* ===== new: task pages ===== */
+textarea{width:100%;padding:9px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;resize:vertical}
+.row{display:flex;flex-wrap:wrap;gap:8px}
+.row .opt{display:inline-block;width:auto;margin:4px 0}
+.qs input[type=text]{width:100%;margin:2px 0 10px}
+.wc{color:var(--mut);font-size:14px}
+.task-h{display:flex;align-items:center;gap:10px}
+.task-h span{background:linear-gradient(135deg,var(--ac),var(--ac2));color:#001018;border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-weight:800;flex:none}
+
+/* ===== new: more animations ===== */
+@keyframes pop{from{opacity:0;transform:translateY(26px) scale(.96)}}
+section.on .card,section.on .tile,section.on .stat,section.on .flip,section.on .res{animation:pop .6s backwards;animation-delay:calc(var(--i,0)*70ms)}
+@keyframes shine{to{background-position:200% center}}
+header h1{background-size:200% auto;animation:shine 5s linear infinite}
+@keyframes bob{50%{transform:translateY(-8px)}}
+.globe{animation:bob 4s ease-in-out infinite}
+@keyframes glow{50%{box-shadow:0 0 30px rgba(184,107,255,.95)}}
+@keyframes glow2{50%{box-shadow:0 0 30px rgba(0,229,255,.9)}}
+.btn{animation:glow 2.6s ease-in-out infinite}
+.btn.alt{animation-name:glow2}
+.btn:active{transform:scale(.93)}
+nav button{transition:.2s}
+nav button:hover{transform:translateY(-2px);border-color:var(--ac)}
+@keyframes slide{to{background-position:200% 0}}
+.bar i{background-size:200% 100%;animation:slide 2.5s linear infinite}
+@keyframes shake{25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+@keyframes pulse{50%{transform:scale(1.04)}}
+.opt.no{animation:shake .4s}
+.opt.ok{animation:pulse .5s}
+.opt:hover{border-color:var(--ac);transform:translateX(3px)}
+.opt{transition:.2s}
+.chip{transition:.2s}.chip:hover{transform:scale(1.07)}
+.flip:hover{transform:scale(1.04) rotate(-1deg)}
+.flip{transition:.25s}
+.stat{transition:.3s}.stat:hover{transform:scale(1.05) rotate(1deg)}
+@keyframes heat{50%{filter:brightness(1.4)}}
+.tube i{animation:heat 1.8s ease-in-out infinite}
+.fl{position:absolute;bottom:-40px;pointer-events:none;opacity:.35;animation:rise linear infinite}
+@keyframes rise{to{transform:translateY(-260px) rotate(40deg);opacity:0}}
+header{overflow:hidden}
+.spk{position:fixed;width:8px;height:8px;border-radius:50%;background:var(--ac);box-shadow:0 0 10px var(--ac);pointer-events:none;z-index:30;animation:spk .7s forwards}
+@keyframes spk{to{transform:translate(0,22px) scale(0);opacity:0}}
+.cf{position:fixed;top:-14px;width:9px;height:14px;z-index:40;pointer-events:none;animation:cf linear forwards}
+@keyframes cf{to{transform:translateY(105vh) rotate(720deg)}}
+.cld{animation:cl 26s linear infinite}
+.cld.b{animation-duration:38s;animation-delay:-14s}
+@keyframes cl{from{transform:translateX(-140px)}to{transform:translateX(720px)}}
+.bird{animation:fly 14s linear infinite}
+@keyframes fly{from{transform:translate(620px,30px)}to{transform:translate(-40px,70px)}}
+.win rect{animation:blink 3s ease-in-out infinite}
+.win rect:nth-child(2){animation-delay:1s}.win rect:nth-child(3){animation-delay:2s}
+@keyframes blink{50%{opacity:.15}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -161,7 +215,7 @@ h2{letter-spacing:.03em;color:var(--ac)}
   <h3>🎨 Choose your final product</h3>
   <div class="grid" id="prods"></div>
   <p id="prodmsg" style="font-weight:600"></p>
-  <p><button class="btn alt" onclick="go('process')">See the steps →</button></p>
+  <p><button class="btn alt" onclick="go('process')">See the steps →</button> <button class="btn" onclick="go('book')">Unit 2 tasks →</button></p>
 </section>
 
 <section id="process">
@@ -174,7 +228,7 @@ h2{letter-spacing:.03em;color:var(--ac)}
   <div class="card" id="eco"></div>
   <h3>🏙️ Step 4 tool: build the city of 2050</h3>
   <div class='card'><p style='margin-top:0'>Switch on solutions and watch the future city change.</p>
-  <svg class='city' viewBox='0 0 600 220' aria-label='City of 2050'><defs><linearGradient id='sk' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#1b0f3a'/><stop offset='1' stop-color='#ff8a3d'/></linearGradient></defs><rect width='600' height='220' fill='url(#sk)'/><circle cx='500' cy='50' r='22' fill='#fff6b0' opacity='.9'/><g fill='#0a1226' stroke='#00e5ff' stroke-width='1'><rect x='40' y='90' width='60' height='110'/><rect x='110' y='60' width='50' height='140'/><rect x='170' y='100' width='70' height='100'/><rect x='250' y='40' width='55' height='160'/><rect x='315' y='85' width='65' height='115'/><rect x='390' y='70' width='50' height='130'/></g><rect y='200' width='600' height='20' fill='#06101f'/><g id='a_solar' opacity='0' fill='#2fa8ff'><rect x='44' y='84' width='52' height='6'/><rect x='114' y='54' width='42' height='6'/><rect x='254' y='34' width='47' height='6'/><rect x='394' y='64' width='42' height='6'/></g><g id='a_trees' opacity='0' fill='#3ddc84'><circle cx='20' cy='190' r='14'/><circle cx='245' cy='192' r='12'/><circle cx='385' cy='192' r='12'/><circle cx='455' cy='190' r='14'/><circle cx='560' cy='188' r='16'/></g><g id='a_ev' opacity='0' fill='#00e5ff'><rect x='120' y='204' width='46' height='10' rx='4'/><rect x='300' y='204' width='46' height='10' rx='4'/></g><g id='a_rec' opacity='0' fill='#b86bff'><rect x='480' y='176' width='14' height='22'/><rect x='498' y='176' width='14' height='22'/></g><g id='a_wind' opacity='0' stroke='#fff' stroke-width='3'><line x1='540' y1='200' x2='540' y2='100'/><g transform='translate(540 100)'><g class='turb'><line x1='0' y1='0' x2='0' y2='-40'/><line x1='0' y1='0' x2='35' y2='20'/><line x1='0' y1='0' x2='-35' y2='20'/></g></g></g><rect id='smog' width='600' height='200' fill='#8a6a3a' opacity='.55'/></svg>
+  <svg class='city' viewBox='0 0 600 220' aria-label='City of 2050'><defs><linearGradient id='sk' x1='0' y1='0' x2='0' y2='1'><stop offset='0' stop-color='#1b0f3a'/><stop offset='1' stop-color='#ff8a3d'/></linearGradient></defs><rect width='600' height='220' fill='url(#sk)'/><circle cx='500' cy='50' r='22' fill='#fff6b0' opacity='.9'/><g class='cld' fill='#fff' opacity='.3'><ellipse cx='60' cy='30' rx='34' ry='10'/><ellipse cx='85' cy='24' rx='22' ry='9'/></g><g class='cld b' fill='#fff' opacity='.25'><ellipse cx='60' cy='62' rx='30' ry='8'/><ellipse cx='82' cy='57' rx='18' ry='7'/></g><path class='bird' d='M0 0q6-8 12 0q6-8 12 0' fill='none' stroke='#fff' stroke-width='2'/><g fill='#0a1226' stroke='#00e5ff' stroke-width='1'><rect x='40' y='90' width='60' height='110'/><rect x='110' y='60' width='50' height='140'/><rect x='170' y='100' width='70' height='100'/><rect x='250' y='40' width='55' height='160'/><rect x='315' y='85' width='65' height='115'/><rect x='390' y='70' width='50' height='130'/></g><g class='win' fill='#ffe66b'><rect x='55' y='110' width='6' height='8'/><rect x='125' y='85' width='6' height='8'/><rect x='268' y='70' width='6' height='8'/><rect x='335' y='110' width='6' height='8'/><rect x='405' y='100' width='6' height='8'/></g><rect y='200' width='600' height='20' fill='#06101f'/><g id='a_solar' opacity='0' fill='#2fa8ff'><rect x='44' y='84' width='52' height='6'/><rect x='114' y='54' width='42' height='6'/><rect x='254' y='34' width='47' height='6'/><rect x='394' y='64' width='42' height='6'/></g><g id='a_trees' opacity='0' fill='#3ddc84'><circle cx='20' cy='190' r='14'/><circle cx='245' cy='192' r='12'/><circle cx='385' cy='192' r='12'/><circle cx='455' cy='190' r='14'/><circle cx='560' cy='188' r='16'/></g><g id='a_ev' opacity='0' fill='#00e5ff'><rect x='120' y='204' width='46' height='10' rx='4'/><rect x='300' y='204' width='46' height='10' rx='4'/></g><g id='a_rec' opacity='0' fill='#b86bff'><rect x='480' y='176' width='14' height='22'/><rect x='498' y='176' width='14' height='22'/></g><g id='a_wind' opacity='0' stroke='#fff' stroke-width='3'><line x1='540' y1='200' x2='540' y2='100'/><g transform='translate(540 100)'><g class='turb'><line x1='0' y1='0' x2='0' y2='-40'/><line x1='0' y1='0' x2='35' y2='20'/><line x1='0' y1='0' x2='-35' y2='20'/></g></g></g><rect id='smog' width='600' height='200' fill='#8a6a3a' opacity='.55'/></svg>
   <div class='sw' id='sw'></div><p class='big' id='fc'></p></div>
 </section>
 
@@ -227,8 +281,63 @@ h2{letter-spacing:.03em;color:var(--ac)}
   <div class="cert hide" id="cert"><h3>Certificate of Climate Action</h3><p>This certificate is proudly awarded to</p><b id="cn"></b><p>Young Climate Expert, for completing the “Our Changing Planet” WebQuest.</p><p id="cd"></p><button class="btn np" onclick="window.print()">Print 🖨️</button></div>
 </section>
 
+<section id="book">
+  <h2>7. Unit 2 Tasks</h2>
+  <p>Practice tasks for <b>Unit 2: Our Changing Planet</b> (Student’s Book pages 14–17). Click an answer: green is correct, red is wrong.</p>
+
+  <div class="card"><div class="task-h"><span>1</span><h3 style="margin:0">Reading: choose the best heading</h3></div>
+    <p>Read the article “The Earth: a changing planet” on page 14. Which heading fits each paragraph?</p>
+    <p class="wc">Headings: A Good news in one part of the world · B Problems for the planet · C The age of the planet · D How the planet changes</p>
+    <div id="t1"></div></div>
+
+  <div class="card"><div class="task-h"><span>2</span><h3 style="margin:0">Vocabulary: geographical features</h3></div>
+    <p>Choose the correct word for each meaning.</p><div id="t2"></div></div>
+
+  <div class="card"><div class="task-h"><span>3</span><h3 style="margin:0">Vocabulary: complete the sentences</h3></div><div id="t3"></div>
+    <p><b>Writing:</b> write five sentences of your own with words from Task 2, then write about the geography of your country.</p>
+    <textarea rows="4" placeholder="There is a big desert in the west of my country…"></textarea></div>
+
+  <div class="card"><div class="task-h"><span>4</span><h3 style="margin:0">Grammar: verbs we don’t usually use in the continuous</h3></div>
+    <p>Verbs about thinking, feeling and owning things (<i>know, like, hate, want, need, own, belong, believe…</i>) usually use the <b>present simple</b>, not the continuous.</p>
+    <div id="t4"></div>
+    <h3>🛠️ Correct the mistakes <small class="wc">(tap to see the answer)</small></h3><div id="t4b"></div></div>
+
+  <div class="card"><div class="task-h"><span>5</span><h3 style="margin:0">Pronunciation: /θ/ or /ð/ ?</h3></div>
+    <p>θ as in <b>earth</b>, ð as in <b>weather</b>. Say each word aloud, then choose the sound of “th”.</p><div id="t5"></div></div>
+
+  <div class="card"><div class="task-h"><span>6</span><h3 style="margin:0">Questions with Do you…? / Are you…?</h3></div>
+    <p>Write a question for each prompt, then walk around the class and ask your classmates.</p><div class="qs" id="t6"></div></div>
+
+  <div class="card"><div class="task-h"><span>7</span><h3 style="margin:0">Vocabulary: animals</h3></div>
+    <p>What is this animal?</p><div id="t7"></div>
+    <p><b>Talking points:</b> What are your five favourite animals? Why do you like them? How often do you go to zoos?</p>
+    <textarea rows="3" placeholder="My favourite animal is… because…"></textarea></div>
+
+  <div class="card"><div class="task-h"><span>8</span><h3 style="margin:0">Reading: Giant panda – right or wrong?</h3></div>
+    <p>Read “Learning about the Giant Panda” on page 16. Are the sentences true or false?</p><div id="t8"></div></div>
+
+  <div class="card"><div class="task-h"><span>9</span><h3 style="margin:0">Writing: an article about an animal</h3></div>
+    <p><b>Get ready:</b> choose between, about, around or including.</p><div id="t9"></div>
+    <h3>🐾 Write questions about the kakapo 🦜 and the sand cat 🐱</h3>
+    <p class="wc">What kind of animal is it? Where is it from? Where does it live? What does it eat? How much does it weigh? How many are left in the wild? What are its babies called? How many babies does a female have? How long does a baby stay with its mother?</p>
+    <h3>✍️ Plan and write</h3>
+    <p>Paragraph 1: kind of animal, where it lives, what it eats · Paragraph 2: weight and its babies · Paragraph 3: how many are left in the wild and in zoos.</p>
+    <textarea id="art" rows="8" placeholder="Write your article here (3 paragraphs)…"></textarea>
+    <p class="wc" id="wc">0 words</p></div>
+  <p><button class="btn" onclick="go('homework')">Go to homework →</button></p>
+</section>
+
+<section id="homework">
+  <h2>8. Homework</h2>
+  <p>Complete the tasks at home. Tick each one when it is done and open “Tips” for help.</p>
+  <div class="bar"><i id="hbar"></i></div>
+  <p id="hmsg" style="font-weight:600"></p>
+  <div class="card" id="hsteps"></div>
+  <div class="card"><b>📅 Deadline:</b> <input type="date" id="hdate" style="padding:9px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit"> <span id="hleft" style="font-weight:600"></span></div>
+</section>
+
 <section id="teacher">
-  <h2>7. Teacher’s Page</h2>
+  <h2>9. Teacher’s Page</h2>
   <div class="card" id="lock">
     <p>This page is for teachers. Enter the code to open it (demo code: <b>teacher</b>).</p>
     <input id="code" type="password" placeholder="Code"> <button class="btn alt" id="unlock">Open</button>
@@ -256,12 +365,13 @@ h2{letter-spacing:.03em;color:var(--ac)}
 <script>
 function $(i){return document.getElementById(i)}
 function el(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e}
-var S=[["introduction","Introduction"],["task","Task"],["process","Process"],["resources","Resources"],["evaluation","Evaluation"],["conclusion","Conclusion"],["teacher","Teacher’s Page"]];
+var S=[["introduction","Introduction"],["task","Task"],["process","Process"],["resources","Resources"],["evaluation","Evaluation"],["conclusion","Conclusion"],["book","Unit 2 Tasks"],["homework","Homework"],["teacher","Teacher’s Page"]];
 var nav=$("nav");
 S.forEach(function(s,i){var b=el("button","",(i+1)+". "+s[1]);b.dataset.id=s[0];b.onclick=function(){go(s[0])};nav.appendChild(b)});
 var counted=false;
 function go(id){
   if(!S.some(function(s){return s[0]===id}))id="introduction";
+  $(id).querySelectorAll(".card,.tile,.stat,.flip,.res").forEach(function(e,i){e.style.setProperty("--i",Math.min(i,14))});
   document.querySelectorAll("section").forEach(function(e){e.classList.toggle("on",e.id===id)});
   nav.querySelectorAll("button").forEach(function(b){b.classList.toggle("on",b.dataset.id===id)});
   try{history.replaceState(null,"","#"+id)}catch(e){}
@@ -292,7 +402,7 @@ var PR=[["🖼️","Poster","Use a big title, 3 sections (causes, effects, solut
 PR.forEach(function(r){var t=el("button","tile","<b>"+r[0]+"</b>"+r[1]);t.onclick=function(){$("prods").querySelectorAll(".tile").forEach(function(x){x.classList.remove("sel")});t.classList.add("sel");$("prodmsg").textContent=r[1]+": "+r[2]};$("prods").appendChild(t)});
 
 var P=[["Form your team and choose roles.","Choose a researcher, designer, speaker and checker. Agree how you will share work and when to meet."],["Watch one video from the Resources page.","Take 3 notes: one cause, one effect and one solution you hear in the video."],["Read two websites and take notes on causes and effects.","Use at least two different sources. Write short notes in your own words and save the links."],["Find 5 solutions that work in your city or school.","Think about energy, transport, waste, water and green spaces. Choose ideas that are realistic and cheap."],["Design your Climate Action Plan.","Use your chosen product (poster, presentation, infographic or video). Include 2 causes, 3 effects and 5 solutions."],["Write one personal pledge for each team member.","A good pledge is small, specific and possible this week. For example: “I will walk to school twice a week.”"],["Present your plan and give feedback to other teams.","Speak clearly, use your notes, and give each team one “star” (something good) and one “wish” (an idea to improve)."]];
-function upd(){var c=$("steps").querySelectorAll("input:checked").length;$("pbar").style.width=(c/P.length*100)+"%";$("pmsg").textContent=c===P.length?"🎉 All steps complete! Go to the Evaluation page.":c+" / "+P.length+" steps done"}
+function upd(){var c=$("steps").querySelectorAll("input:checked").length;$("pbar").style.width=(c/P.length*100)+"%";$("pmsg").textContent=c===P.length?"🎉 All steps complete! Go to the Evaluation page.":c+" / "+P.length+" steps done";if(c===P.length)confetti()}
 P.forEach(function(p,i){var d=el("div","step","<label><input type='checkbox'><span><b>Step "+(i+1)+":</b> "+p[0]+"</span></label><details><summary>Tips</summary>"+p[1]+"</details>");d.querySelector("input").onchange=upd;$("steps").appendChild(d)});upd();
 
 var E=[["How do you usually get to school?",[["Walk or bike",1],["Bus",2],["Car",4]]],["How often do you eat meat?",[["Rarely",1],["Some days",2],["Every day",4]]],["Do you switch off lights and chargers?",[["Always",1],["Sometimes",2],["Rarely",4]]],["What kind of bottles and bags do you use?",[["Reusable",1],["A mix",2],["Mostly single-use",4]]]];
@@ -303,12 +413,12 @@ $("eco").appendChild(eb);$("eco").appendChild(eo);
 var RS=[["🌐","web","NASA Climate Kids","Games, videos and simple explanations","https://climatekids.nasa.gov"],["🌐","web","NASA Climate Change","Data, graphs and evidence","https://climate.nasa.gov"],["🌐","web","NOAA Climate.gov","Maps, data stories and teaching tools","https://www.climate.gov"],["🌐","web","United Nations Climate Action","Global goals and facts","https://www.un.org/en/climatechange"],["🌐","web","National Geographic Kids","Nature and environment for young readers","https://kids.nationalgeographic.com"],["🌐","web","BBC Bitesize","School-level science and geography lessons","https://www.bbc.co.uk/bitesize"],["🎬","vid","Climate change explained for kids","Short beginner videos (YouTube search)","https://www.youtube.com/results?search_query=climate+change+explained+for+kids"],["🎬","vid","Kurzgesagt: climate change","Animated explainers (YouTube search)","https://www.youtube.com/results?search_query=Kurzgesagt+climate+change"],["🎬","vid","TED-Ed: climate change","Short lessons with animation (YouTube search)","https://www.youtube.com/results?search_query=TED-Ed+climate+change"],["🎬","vid","The greenhouse effect explained","How heat gets trapped (YouTube search)","https://www.youtube.com/results?search_query=greenhouse+effect+explained+for+kids"],["🎬","vid","Sea level rise explained","Why oceans are rising (YouTube search)","https://www.youtube.com/results?search_query=sea+level+rise+explained"],["🎬","vid","Renewable energy for kids","Solar, wind and water power (YouTube search)","https://www.youtube.com/results?search_query=renewable+energy+for+kids"],["📰","art","WWF","How climate change affects wildlife","https://www.worldwildlife.org"],["📰","art","Our World in Data","Charts about CO₂, energy and temperature","https://ourworldindata.org"],["📰","art","IPCC","Reports by the world’s top climate scientists (advanced)","https://www.ipcc.ch"],["📰","art","Earth Day","Ideas for school and community action","https://www.earthday.org"]];
 var CH=[["all","All"],["web","🌐 Websites"],["vid","🎬 Videos"],["art","📰 Articles"]];
 function showRes(k){$("chips").querySelectorAll(".chip").forEach(function(c){c.classList.toggle("on",c.dataset.k===k)});$("reslist").innerHTML="";
-  RS.filter(function(r){return k==="all"||r[1]===k}).forEach(function(r){var v=r[1]==='vid';$('reslist').appendChild(el('div','res'+(v?' vid':''),(v?"<span class='pl'>▶</span>":'<em>'+r[0]+'</em>')+"<div><a href='"+r[4]+"' target='_blank' rel='noopener'>"+(v?'Watch: ':'')+r[2]+'</a><small>'+r[3]+'</small></div>'))})}
+  RS.filter(function(r){return k==="all"||r[1]===k}).forEach(function(r,i){var v=r[1]==='vid';var e=el('div','res'+(v?' vid':''),(v?"<span class='pl'>▶</span>":'<em>'+r[0]+'</em>')+"<div><a href='"+r[4]+"' target='_blank' rel='noopener'>"+(v?'Watch: ':'')+r[2]+'</a><small>'+r[3]+'</small></div>');e.style.setProperty('--i',Math.min(i,10));$('reslist').appendChild(e)})}
 CH.forEach(function(c){var b=el("button","chip",c[1]);b.dataset.k=c[0];b.onclick=function(){showRes(c[0])};$("chips").appendChild(b)});showRes("all");
 
 ["Research","Creativity","Solutions","Teamwork","Language"].forEach(function(n,i){var d=el("p","",n+": ");var s=el("select");s.id="r"+i;[4,3,2,1].forEach(function(v){var o=el("option","",String(v));o.value=v;s.appendChild(o)});d.appendChild(s);$("rub").appendChild(d)});
 var rb=el("button","btn alt","Calculate my grade"),ro=el("p","big");
-rb.onclick=function(){var t=0;for(var i=0;i<5;i++)t+=+$("r"+i).value;ro.textContent=t+" / 20 – "+(t>=18?"Grade 5 🏆":t>=15?"Grade 4 👏":t>=11?"Grade 3 🙂":"Keep improving 💪")};
+rb.onclick=function(){var t=0;for(var i=0;i<5;i++)t+=+$("r"+i).value;ro.textContent=t+" / 20 – "+(t>=18?"Grade 5 🏆":t>=15?"Grade 4 👏":t>=11?"Grade 3 🙂":"Keep improving 💪");if(t>=18)confetti()};
 $("rub").appendChild(rb);$("rub").appendChild(ro);
 
 var Q=[["Which gas is the main greenhouse gas from human activity?",["Oxygen","Carbon dioxide","Nitrogen"],1],["Which is a cause of climate change?",["Planting trees","Using bicycles","Burning coal and oil"],2],["What happens when polar ice melts?",["Sea levels rise","Seas get smaller","Nothing changes"],0],["Which action helps the planet most?",["Leaving lights on","Saving energy and recycling","Using more plastic"],1],["Which of these is renewable energy?",["Coal","Solar power","Natural gas"],1],["What do trees take in from the air?",["Carbon dioxide","Gold","Smoke"],0],["What is the greenhouse effect?",["Plants growing in glass houses","Gases in the air trapping heat","A hole in the sky"],1],["What is a carbon footprint?",["The size of your shoe","The greenhouse gases caused by your activities","A footprint in the snow"],1]];
@@ -317,32 +427,65 @@ Q.forEach(function(q,qi){var d=el("div","","<p><b>"+(qi+1)+". "+q[0]+"</b></p>")
   q[1].forEach(function(o,oi){var b=el("button","opt");b.textContent=o;b.onclick=function(){if(lk)return;lk=true;done++;
     if(oi===q[2]){b.classList.add("ok");score++}else{b.classList.add("no");d.querySelectorAll(".opt")[q[2]].classList.add("ok")}
     $("qbar").style.width=(done/Q.length*100)+"%";
-    if(done===Q.length)res.textContent="Your score: "+score+" / "+Q.length+(score===Q.length?" 🏆 Perfect!":score>=6?" 👏 Great job!":" – try again to improve!")};d.appendChild(b)});
+    if(done===Q.length){res.textContent="Your score: "+score+" / "+Q.length+(score===Q.length?" 🏆 Perfect!":score>=6?" 👏 Great job!":" – try again to improve!");if(score===Q.length)confetti()}};d.appendChild(b)});
   $("quiz").appendChild(d)});$("quiz").appendChild(res);
 $("key").textContent=Q.map(function(q,i){return (i+1)+"-"+"ABC"[q[2]]}).join(", ");
 
 var PL=["I will turn off lights when I leave a room.","I will use a reusable bottle and bag.","I will walk or cycle for short trips.","I will plant a tree this spring.","I will sort my rubbish for recycling.","I will eat one plant-based meal each week.","I will take shorter showers."];
 $("pledgeBtn").onclick=function(){$("pledge").textContent="🌱 "+PL[Math.floor(Math.random()*PL.length)]};
 $("addP").onclick=function(){var v=$("mine").value.trim();if(!v)return;var li=el("li");li.textContent="🌱 "+v;$("wall").appendChild(li);$("mine").value=""};
-$("mk").onclick=function(){var n=$("nm").value.trim();if(!n)return;$("cn").textContent=n;$("cd").textContent=new Date().toLocaleDateString();$("cert").classList.remove("hide")};
+$("mk").onclick=function(){var n=$("nm").value.trim();if(!n)return;$("cn").textContent=n;$("cd").textContent=new Date().toLocaleDateString();$("cert").classList.remove("hide");confetti()};
 
 $("unlock").onclick=function(){if($("code").value.trim().toLowerCase()==="teacher"){$("lock").classList.add("hide");$("tcontent").classList.remove("hide")}else{$("lockmsg").textContent="Wrong code."}};
 
 var A=[['solar','☀️ Solar roofs'],['trees','🌳 Trees'],['ev','🚌 Electric buses'],['rec','♻️ Recycling'],['wind','💨 Wind power']],on={};
-function sim(){var n=0;A.forEach(function(a){var v=on[a[0]]?1:0;n+=v;$('a_'+a[0]).style.opacity=v});$('smog').style.opacity=.55-n*.11;$('fc').textContent='City health: '+n*20+'% – '+['Smog everywhere 😷','The air is starting to clear','Getting better!','A greener city appears 🌱','Almost perfect!','A clean, green city of 2050 🌆✨'][n]}
+function sim(){var n=0;A.forEach(function(a){var v=on[a[0]]?1:0;n+=v;$('a_'+a[0]).style.opacity=v});$('smog').style.opacity=.55-n*.11;$('fc').textContent='City health: '+n*20+'% – '+['Smog everywhere 😷','The air is starting to clear','Getting better!','A greener city appears 🌱','Almost perfect!','A clean, green city of 2050 🌆✨'][n];if(n===5)confetti()}
 A.forEach(function(a){var b=el('button','chip',a[1]);b.onclick=function(){on[a[0]]=!on[a[0]];b.classList.toggle('on');sim()};$('sw').appendChild(b)});sim();
 ['Turn off lights and chargers you are not using.','Walk, cycle or take the bus once.','Use a reusable bottle and bag all day.','Eat one plant-based meal.','Sort your rubbish for recycling.','Take a 5-minute shorter shower.','Tell your family one climate fact.'].forEach(function(t,i){$('chal').appendChild(el('div','step',"<label><input type='checkbox'><span><b>Day "+(i+1)+':</b> '+t+'</span></label>'))});
+
+/* ===== Unit 2 tasks ===== */
+function mq(id,items){var box=$(id),sc=0,dn=0,out=el('p','big');
+  items.forEach(function(q,qi){var d=el('div','',"<p style='margin:10px 0 2px'><b>"+(qi+1)+".</b> "+q[0]+"</p>"),w=el('div','row'),lk=false;
+    q[1].forEach(function(o,oi){var b=el('button','opt');b.textContent=o;b.onclick=function(){if(lk)return;lk=true;dn++;
+      if(oi===q[2]){b.classList.add('ok');sc++}else{b.classList.add('no');w.querySelectorAll('.opt')[q[2]].classList.add('ok')}
+      if(dn===items.length){out.textContent='Score: '+sc+' / '+items.length+(sc===items.length?' 🏆 Perfect!':sc>=items.length*.7?' 👏 Great job!':' – read again and try once more!');if(sc===items.length)confetti()}};w.appendChild(b)});
+    d.appendChild(w);box.appendChild(d)});box.appendChild(out)}
+mq('t1',[["Paragraph 1 (the age of mountains, forests and seas)",["A","B","C","D"],2],["Paragraph 2 (volcanoes, glaciers, wind and rain)",["A","B","C","D"],3],["Paragraph 3 (deserts growing, forests getting smaller)",["A","B","C","D"],1],["Paragraph 4 (farmers in Greenland)",["A","B","C","D"],0]]);
+mq('t2',[["🏜️ A very dry place with little rain",["desert","lake","hill"],0],["🌋 A mountain that can throw out hot lava",["valley","volcano","river"],1],["🏞️ Water that flows along to the sea",["river","forest","desert"],0],["🌲 A big area full of trees",["volcano","sea","forest"],2],["⛰️ Low land between hills or mountains",["lake","valley","desert"],1],["💧 A big area of water with land all around",["lake","sea","river"],0]]);
+mq('t3',[["Few plants can live in the ______ because it is very hot and dry.",["desert","forest"],0],["Many ______ have snow on top all year.",["mountains","valleys"],0],["We go fishing in the ______ near my home.",["volcano","river"],1],["It was so dark in the ______ that we could not see the sky.",["forest","sea"],0],["We cycled to the ______ for a swim.",["lake","hill"],0]]);
+mq('t4',[["I ______ this song. Please turn it off.",["hate","am hating"],0],["Are you free? I ______ to talk to you.",["want","am wanting"],0],["Look! She ______ to the park right now.",["goes","is going"],1],["This bag ______ to my brother.",["belongs","is belonging"],0],["They ______ football at the moment.",["play","are playing"],1],["I ______ the answer to your question.",["know","am knowing"],0]]);
+[["I’m needing some help.","I need some help."],["She’s liking pizza.","She likes pizza."],["We’re having a great time at the party. (✓ or ✗?)","Correct! “have” = “experience” can be continuous."],["Are you knowing him?","Do you know him?"],["He’s owning two bikes.","He owns two bikes."]].forEach(function(m){$('t4b').appendChild(el('details','',"<summary>❌ "+m[0]+"</summary><b>✅ "+m[1]+"</b>"))});
+mq('t5',[["<b>north</b>",["θ","ð"],0],["<b>other</b>",["θ","ð"],1],["<b>south</b>",["θ","ð"],0],["<b>that</b>",["θ","ð"],1],["<b>thing</b>",["θ","ð"],0],["<b>these</b>",["θ","ð"],1],["<b>think</b>",["θ","ð"],0],["<b>there</b>",["θ","ð"],1]]);
+["own / a bike?","learn to / play an instrument?","like / cabbage?","do / an art project at the moment?","think / English is easy?","plan to / do something interesting this weekend?","love / watching TV?","need / study for an exam?"].forEach(function(p){$('t6').appendChild(el('div','',"<small class='wc'>"+p+"</small><input type='text' placeholder='Do you… / Are you…?'>"))});
+var AN=[['🐒','monkey'],['🐘','elephant'],['🐍','snake'],['🐻‍❄️','polar bear'],['🐋','whale'],['🦒','giraffe'],['🐅','tiger'],['🦜','parrot'],['🐧','penguin'],['🐬','dolphin']];
+mq('t7',AN.map(function(a,i){var n=AN.length,o=[a[1],AN[(i+3)%n][1],AN[(i+6)%n][1]],p=i%3,t=o[0];o[0]=o[p];o[p]=t;return ["<span style='font-size:32px'>"+a[0]+"</span>",o,p]}));
+mq('t8',[["The writer helped to look after giant pandas on her trip.",["✓ True","✗ False"],0],["It’s possible to find wild pandas in several countries.",["✓ True","✗ False"],1],["Pandas only eat bamboo.",["✓ True","✗ False"],1],["Baby pandas are very light when they are born.",["✓ True","✗ False"],0],["Pandas start eating bamboo at the age of 18 months.",["✓ True","✗ False"],1],["Scientists know exactly how many wild pandas there are.",["✓ True","✗ False"],1],["It’s possible to see a panda in Mexico.",["✓ True","✗ False"],0]]);
+mq('t9',[["The competition is for children ______ the ages of 10 and 14.",["between","about","around","including"],0],["There are ______ 3,000 tigers left in the wild.",["between","about","including","(none)"],1],["I like all animals, ______ snakes.",["between","including","around","(none)"],1],["The zoo is open ______ Monday and Friday.",["between","including","about","(none)"],0],["Pandas live in the mountains ______ central China.",["including","between","around","(none)"],2]]);
+$('art').oninput=function(){var n=this.value.trim().split(/\s+/).filter(Boolean).length;$('wc').textContent=n+' words'+(n>=80?' ✅ great length!':' (aim for 80–100)')};
+
+/* ===== Homework ===== */
+var H=[["Write 5 sentences with geography words (desert, valley, volcano, lake, river…).","Use one word in each sentence. Example: “There is a big desert in the west of Uzbekistan.”"],["Write 5 sentences about the geography of your country.","Think about mountains, rivers, deserts and lakes. Say where they are: in the north, south, east or west."],["Grammar: write 6 sentences with verbs like know, like, want, need, own, belong.","Remember: use the present simple, not the continuous. Wrong: “I am knowing.” Right: “I know.”"],["Write questions with “Do you…?” / “Are you…?” and ask 3 people.","Use the prompts from Unit 2 Task 6 and write down the answers."],["Learn the 10 animal words and make flashcards.","Draw the animal on one side and write the word on the other. Practise with a friend."],["Practise the /θ/ and /ð/ sounds: record yourself saying 8 words.","Put your tongue between your teeth. Words: think, thing, north, earth · this, that, other, weather."],["Write an article about an animal (3 paragraphs, 80–100 words).","Use between, about, around or including. Paragraph 1: what and where. Paragraph 2: weight and babies. Paragraph 3: how many are left."],["Panda fact file: 3 things you knew + 3 new things you learned.","Reread “Learning about the Giant Panda” on page 16 and write short notes."]];
+function hupd(){var c=$('hsteps').querySelectorAll('input:checked').length;$('hbar').style.width=(c/H.length*100)+'%';$('hmsg').textContent=c===H.length?'🎉 All homework done! Well done!':c+' / '+H.length+' tasks done';if(c===H.length)confetti()}
+H.forEach(function(p,i){var d=el('div','step',"<label><input type='checkbox'><span><b>Task "+(i+1)+":</b> "+p[0]+"</span></label><details><summary>Tips</summary>"+p[1]+"</details>");d.querySelector('input').onchange=hupd;$('hsteps').appendChild(d)});hupd();
+$('hdate').onchange=function(){var d=Math.ceil((new Date(this.value)-new Date())/864e5);$('hleft').textContent=isNaN(d)?'':d>0?'⏳ '+d+' day'+(d>1?'s':'')+' left':d===0?'⏰ Due today!':'⚠️ The deadline has passed.'};
+
+/* ===== XP, effects ===== */
 var XP=0,LV=[[0,'Cadet'],[40,'Explorer'],[90,'Scientist'],[150,'Guardian'],[220,'Planet Hero 🌍']],cur=0,seen=new WeakSet();
 function toast(m){var t=$('toast');t.textContent=m;t.classList.add('show');setTimeout(function(){t.classList.remove('show')},2200)}
-function hud(){var l=0;LV.forEach(function(v,i){if(XP>=v[0])l=i});var nx=LV[l+1];$('lv').textContent='Level '+(l+1)+': '+LV[l][1]+' · '+XP+' XP'+(nx?' / '+nx[0]:' · MAX');$('xb').style.width=(nx?(XP-LV[l][0])/(nx[0]-LV[l][0])*100:100)+'%';if(l>cur){cur=l;toast('🚀 Level up! '+LV[l][1])}}
+function confetti(){for(var i=0;i<46;i++){var c=el('i','cf');c.style.left=Math.random()*100+'vw';c.style.background=['#00e5ff','#b86bff','#ff8a3d','#3ddc84','#ff4fd8'][i%5];c.style.animationDuration=(1.8+Math.random()*1.6)+'s';c.style.animationDelay=Math.random()*.4+'s';document.body.appendChild(c);(function(c){setTimeout(function(){c.remove()},4200)})(c)}}
+function hud(){var l=0;LV.forEach(function(v,i){if(XP>=v[0])l=i});var nx=LV[l+1];$('lv').textContent='Level '+(l+1)+': '+LV[l][1]+' · '+XP+' XP'+(nx?' / '+nx[0]:' · MAX');$('xb').style.width=(nx?(XP-LV[l][0])/(nx[0]-LV[l][0])*100:100)+'%';if(l>cur){cur=l;toast('🚀 Level up! '+LV[l][1]);confetti()}}
 function gain(n){XP+=n;hud()}
 document.addEventListener('click',function(e){var t=e.target.closest('.tile,.flip,.chip,.btn,.opt,nav button');if(!t||seen.has(t))return;seen.add(t);gain(t.classList.contains('opt')?(t.classList.contains('ok')?10:1):2)});
 document.addEventListener('change',function(e){if(e.target.type==='checkbox'&&e.target.checked&&!seen.has(e.target)){seen.add(e.target);gain(10)}});
 hud();
-(function(){var c=$('sky'),x=c.getContext('2d'),W,H,s=[],t=0;function rs(){W=c.width=innerWidth;H=c.height=innerHeight;s=[];for(var i=0;i<130;i++)s.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.3,v:Math.random()*.25+.05})}
+var lt=0;document.addEventListener('pointermove',function(e){var n=Date.now();if(n-lt<60||e.pointerType==='touch')return;lt=n;var s=el('i','spk');s.style.left=e.clientX+'px';s.style.top=e.clientY+'px';document.body.appendChild(s);setTimeout(function(){s.remove()},700)});
+['🌍','🌱','🐼','☀️','💧','🌳','🐧','🌋','🦜','🐘'].forEach(function(em,i){var s=el('span','fl',em);s.style.left=(i*10+3)+'%';s.style.fontSize=(18+i%3*8)+'px';s.style.animationDuration=(6+i%4*2)+'s';s.style.animationDelay=(-i*1.3)+'s';document.querySelector('header').appendChild(s)});
+(function(){var c=$('sky'),x=c.getContext('2d'),W,H,s=[],t=0,ss=null;function rs(){W=c.width=innerWidth;H=c.height=innerHeight;s=[];for(var i=0;i<130;i++)s.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.5+.3,v:Math.random()*.25+.05})}
 rs();addEventListener('resize',rs);
 function f(){t+=.004;x.clearRect(0,0,W,H);x.fillStyle='#fff';s.forEach(function(p){p.y+=p.v;if(p.y>H){p.y=0;p.x=Math.random()*W}x.globalAlpha=.4+.4*Math.sin(t*20+p.x);x.beginPath();x.arc(p.x,p.y,p.r,0,6.3);x.fill()});
-x.globalAlpha=.3;x.strokeStyle='#00e5ff';var cx=W*.86,cy=H*.24,R=Math.min(W,H)*.13,k;for(k=0;k<6;k++){x.beginPath();x.ellipse(cx,cy,R*Math.abs(Math.cos(t+k*.52))+.5,R,0,0,6.3);x.stroke()}for(k=-2;k<=2;k++){var d=k*R/3;x.beginPath();x.ellipse(cx,cy+d,Math.sqrt(R*R-d*d),R*.12,0,0,6.3);x.stroke()}requestAnimationFrame(f)}f()})();
+x.globalAlpha=.3;x.strokeStyle='#00e5ff';var cx=W*.86,cy=H*.24,R=Math.min(W,H)*.13,k;for(k=0;k<6;k++){x.beginPath();x.ellipse(cx,cy,R*Math.abs(Math.cos(t+k*.52))+.5,R,0,0,6.3);x.stroke()}for(k=-2;k<=2;k++){var d=k*R/3;x.beginPath();x.ellipse(cx,cy+d,Math.sqrt(R*R-d*d),R*.12,0,0,6.3);x.stroke()}
+if(!ss&&Math.random()<.006)ss={x:W*.3+Math.random()*W*.7,y:0};if(ss){x.globalAlpha=.8;x.strokeStyle='#fff';x.lineWidth=2;x.beginPath();x.moveTo(ss.x,ss.y);x.lineTo(ss.x+70,ss.y-35);x.stroke();x.lineWidth=1;ss.x-=11;ss.y+=5.5;if(ss.y>H)ss=null}
+requestAnimationFrame(f)}f()})();
 go(location.hash.slice(1));
 </script>
 </body>
