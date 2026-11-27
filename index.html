@@ -215,7 +215,51 @@ header{overflow:hidden}
   <h3>🎨 Choose your final product</h3>
   <div class="grid" id="prods"></div>
   <p id="prodmsg" style="font-weight:600"></p>
-  <p><button class="btn alt" onclick="go('process')">See the steps →</button> <button class="btn" onclick="go('book')">Unit 2 tasks →</button></p>
+
+  <h2 style="margin-top:34px">📚 Unit 2 Tasks</h2>
+  <p>Practice tasks for <b>Unit 2: Our Changing Planet</b> (Student’s Book pages 14–17). Click an answer: green is correct, red is wrong.</p>
+
+  <div class="card"><div class="task-h"><span>1</span><h3 style="margin:0">Reading: choose the best heading</h3></div>
+    <p>Read the article “The Earth: a changing planet” on page 14. Which heading fits each paragraph?</p>
+    <p class="wc">Headings: A Good news in one part of the world · B Problems for the planet · C The age of the planet · D How the planet changes</p>
+    <div id="t1"></div></div>
+
+  <div class="card"><div class="task-h"><span>2</span><h3 style="margin:0">Vocabulary: geographical features</h3></div>
+    <p>Choose the correct word for each meaning.</p><div id="t2"></div></div>
+
+  <div class="card"><div class="task-h"><span>3</span><h3 style="margin:0">Vocabulary: complete the sentences</h3></div><div id="t3"></div>
+    <p><b>Writing:</b> write five sentences of your own with words from Task 2, then write about the geography of your country.</p>
+    <textarea rows="4" placeholder="There is a big desert in the west of my country…"></textarea></div>
+
+  <div class="card"><div class="task-h"><span>4</span><h3 style="margin:0">Grammar: verbs we don’t usually use in the continuous</h3></div>
+    <p>Verbs about thinking, feeling and owning things (<i>know, like, hate, want, need, own, belong, believe…</i>) usually use the <b>present simple</b>, not the continuous.</p>
+    <div id="t4"></div>
+    <h3>🛠️ Correct the mistakes <small class="wc">(tap to see the answer)</small></h3><div id="t4b"></div></div>
+
+  <div class="card"><div class="task-h"><span>5</span><h3 style="margin:0">Pronunciation: /θ/ or /ð/ ?</h3></div>
+    <p>θ as in <b>earth</b>, ð as in <b>weather</b>. Say each word aloud, then choose the sound of “th”.</p><div id="t5"></div></div>
+
+  <div class="card"><div class="task-h"><span>6</span><h3 style="margin:0">Questions with Do you…? / Are you…?</h3></div>
+    <p>Write a question for each prompt, then walk around the class and ask your classmates.</p><div class="qs" id="t6"></div></div>
+
+  <div class="card"><div class="task-h"><span>7</span><h3 style="margin:0">Vocabulary: animals</h3></div>
+    <p>What is this animal?</p><div id="t7"></div>
+    <p><b>Talking points:</b> What are your five favourite animals? Why do you like them? How often do you go to zoos?</p>
+    <textarea rows="3" placeholder="My favourite animal is… because…"></textarea></div>
+
+  <div class="card"><div class="task-h"><span>8</span><h3 style="margin:0">Reading: Giant panda – right or wrong?</h3></div>
+    <p>Read “Learning about the Giant Panda” on page 16. Are the sentences true or false?</p><div id="t8"></div></div>
+
+  <div class="card"><div class="task-h"><span>9</span><h3 style="margin:0">Writing: an article about an animal</h3></div>
+    <p><b>Get ready:</b> choose between, about, around or including.</p><div id="t9"></div>
+    <h3>🐾 Write questions about the kakapo 🦜 and the sand cat 🐱</h3>
+    <p class="wc">What kind of animal is it? Where is it from? Where does it live? What does it eat? How much does it weigh? How many are left in the wild? What are its babies called? How many babies does a female have? How long does a baby stay with its mother?</p>
+    <h3>✍️ Plan and write</h3>
+    <p>Paragraph 1: kind of animal, where it lives, what it eats · Paragraph 2: weight and its babies · Paragraph 3: how many are left in the wild and in zoos.</p>
+    <textarea id="art" rows="8" placeholder="Write your article here (3 paragraphs)…"></textarea>
+    <p class="wc" id="wc">0 words</p></div>
+
+  <p><button class="btn alt" onclick="go('process')">See the steps →</button></p>
 </section>
 
 <section id="process">
@@ -281,63 +325,8 @@ header{overflow:hidden}
   <div class="cert hide" id="cert"><h3>Certificate of Climate Action</h3><p>This certificate is proudly awarded to</p><b id="cn"></b><p>Young Climate Expert, for completing the “Our Changing Planet” WebQuest.</p><p id="cd"></p><button class="btn np" onclick="window.print()">Print 🖨️</button></div>
 </section>
 
-<section id="book">
-  <h2>7. Unit 2 Tasks</h2>
-  <p>Practice tasks for <b>Unit 2: Our Changing Planet</b> (Student’s Book pages 14–17). Click an answer: green is correct, red is wrong.</p>
-
-  <div class="card"><div class="task-h"><span>1</span><h3 style="margin:0">Reading: choose the best heading</h3></div>
-    <p>Read the article “The Earth: a changing planet” on page 14. Which heading fits each paragraph?</p>
-    <p class="wc">Headings: A Good news in one part of the world · B Problems for the planet · C The age of the planet · D How the planet changes</p>
-    <div id="t1"></div></div>
-
-  <div class="card"><div class="task-h"><span>2</span><h3 style="margin:0">Vocabulary: geographical features</h3></div>
-    <p>Choose the correct word for each meaning.</p><div id="t2"></div></div>
-
-  <div class="card"><div class="task-h"><span>3</span><h3 style="margin:0">Vocabulary: complete the sentences</h3></div><div id="t3"></div>
-    <p><b>Writing:</b> write five sentences of your own with words from Task 2, then write about the geography of your country.</p>
-    <textarea rows="4" placeholder="There is a big desert in the west of my country…"></textarea></div>
-
-  <div class="card"><div class="task-h"><span>4</span><h3 style="margin:0">Grammar: verbs we don’t usually use in the continuous</h3></div>
-    <p>Verbs about thinking, feeling and owning things (<i>know, like, hate, want, need, own, belong, believe…</i>) usually use the <b>present simple</b>, not the continuous.</p>
-    <div id="t4"></div>
-    <h3>🛠️ Correct the mistakes <small class="wc">(tap to see the answer)</small></h3><div id="t4b"></div></div>
-
-  <div class="card"><div class="task-h"><span>5</span><h3 style="margin:0">Pronunciation: /θ/ or /ð/ ?</h3></div>
-    <p>θ as in <b>earth</b>, ð as in <b>weather</b>. Say each word aloud, then choose the sound of “th”.</p><div id="t5"></div></div>
-
-  <div class="card"><div class="task-h"><span>6</span><h3 style="margin:0">Questions with Do you…? / Are you…?</h3></div>
-    <p>Write a question for each prompt, then walk around the class and ask your classmates.</p><div class="qs" id="t6"></div></div>
-
-  <div class="card"><div class="task-h"><span>7</span><h3 style="margin:0">Vocabulary: animals</h3></div>
-    <p>What is this animal?</p><div id="t7"></div>
-    <p><b>Talking points:</b> What are your five favourite animals? Why do you like them? How often do you go to zoos?</p>
-    <textarea rows="3" placeholder="My favourite animal is… because…"></textarea></div>
-
-  <div class="card"><div class="task-h"><span>8</span><h3 style="margin:0">Reading: Giant panda – right or wrong?</h3></div>
-    <p>Read “Learning about the Giant Panda” on page 16. Are the sentences true or false?</p><div id="t8"></div></div>
-
-  <div class="card"><div class="task-h"><span>9</span><h3 style="margin:0">Writing: an article about an animal</h3></div>
-    <p><b>Get ready:</b> choose between, about, around or including.</p><div id="t9"></div>
-    <h3>🐾 Write questions about the kakapo 🦜 and the sand cat 🐱</h3>
-    <p class="wc">What kind of animal is it? Where is it from? Where does it live? What does it eat? How much does it weigh? How many are left in the wild? What are its babies called? How many babies does a female have? How long does a baby stay with its mother?</p>
-    <h3>✍️ Plan and write</h3>
-    <p>Paragraph 1: kind of animal, where it lives, what it eats · Paragraph 2: weight and its babies · Paragraph 3: how many are left in the wild and in zoos.</p>
-    <textarea id="art" rows="8" placeholder="Write your article here (3 paragraphs)…"></textarea>
-    <p class="wc" id="wc">0 words</p></div>
-  <p><button class="btn" onclick="go('homework')">Go to homework →</button></p>
-</section>
-
-<section id="homework">
-  <h2>8. Homework</h2>
-  <p>Complete the tasks at home. Tick each one when it is done and open “Tips” for help.</p>
-  <div class="bar"><i id="hbar"></i></div>
-  <p id="hmsg" style="font-weight:600"></p>
-  <div class="card" id="hsteps"></div>
-  <div class="card"><b>📅 Deadline:</b> <input type="date" id="hdate" style="padding:9px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit"> <span id="hleft" style="font-weight:600"></span></div>
-</section>
-
 <section id="teacher">
-  <h2>9. Teacher’s Page</h2>
+  <h2>7. Teacher’s Page</h2>
   <div class="card" id="lock">
     <p>This page is for teachers. Enter the code to open it (demo code: <b>teacher</b>).</p>
     <input id="code" type="password" placeholder="Code"> <button class="btn alt" id="unlock">Open</button>
@@ -365,7 +354,7 @@ header{overflow:hidden}
 <script>
 function $(i){return document.getElementById(i)}
 function el(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e}
-var S=[["introduction","Introduction"],["task","Task"],["process","Process"],["resources","Resources"],["evaluation","Evaluation"],["conclusion","Conclusion"],["book","Unit 2 Tasks"],["homework","Homework"],["teacher","Teacher’s Page"]];
+var S=[["introduction","Introduction"],["task","Task"],["process","Process"],["resources","Resources"],["evaluation","Evaluation"],["conclusion","Conclusion"],["teacher","Teacher’s Page"]];
 var nav=$("nav");
 S.forEach(function(s,i){var b=el("button","",(i+1)+". "+s[1]);b.dataset.id=s[0];b.onclick=function(){go(s[0])};nav.appendChild(b)});
 var counted=false;
@@ -462,12 +451,6 @@ mq('t7',AN.map(function(a,i){var n=AN.length,o=[a[1],AN[(i+3)%n][1],AN[(i+6)%n][
 mq('t8',[["The writer helped to look after giant pandas on her trip.",["✓ True","✗ False"],0],["It’s possible to find wild pandas in several countries.",["✓ True","✗ False"],1],["Pandas only eat bamboo.",["✓ True","✗ False"],1],["Baby pandas are very light when they are born.",["✓ True","✗ False"],0],["Pandas start eating bamboo at the age of 18 months.",["✓ True","✗ False"],1],["Scientists know exactly how many wild pandas there are.",["✓ True","✗ False"],1],["It’s possible to see a panda in Mexico.",["✓ True","✗ False"],0]]);
 mq('t9',[["The competition is for children ______ the ages of 10 and 14.",["between","about","around","including"],0],["There are ______ 3,000 tigers left in the wild.",["between","about","including","(none)"],1],["I like all animals, ______ snakes.",["between","including","around","(none)"],1],["The zoo is open ______ Monday and Friday.",["between","including","about","(none)"],0],["Pandas live in the mountains ______ central China.",["including","between","around","(none)"],2]]);
 $('art').oninput=function(){var n=this.value.trim().split(/\s+/).filter(Boolean).length;$('wc').textContent=n+' words'+(n>=80?' ✅ great length!':' (aim for 80–100)')};
-
-/* ===== Homework ===== */
-var H=[["Write 5 sentences with geography words (desert, valley, volcano, lake, river…).","Use one word in each sentence. Example: “There is a big desert in the west of Uzbekistan.”"],["Write 5 sentences about the geography of your country.","Think about mountains, rivers, deserts and lakes. Say where they are: in the north, south, east or west."],["Grammar: write 6 sentences with verbs like know, like, want, need, own, belong.","Remember: use the present simple, not the continuous. Wrong: “I am knowing.” Right: “I know.”"],["Write questions with “Do you…?” / “Are you…?” and ask 3 people.","Use the prompts from Unit 2 Task 6 and write down the answers."],["Learn the 10 animal words and make flashcards.","Draw the animal on one side and write the word on the other. Practise with a friend."],["Practise the /θ/ and /ð/ sounds: record yourself saying 8 words.","Put your tongue between your teeth. Words: think, thing, north, earth · this, that, other, weather."],["Write an article about an animal (3 paragraphs, 80–100 words).","Use between, about, around or including. Paragraph 1: what and where. Paragraph 2: weight and babies. Paragraph 3: how many are left."],["Panda fact file: 3 things you knew + 3 new things you learned.","Reread “Learning about the Giant Panda” on page 16 and write short notes."]];
-function hupd(){var c=$('hsteps').querySelectorAll('input:checked').length;$('hbar').style.width=(c/H.length*100)+'%';$('hmsg').textContent=c===H.length?'🎉 All homework done! Well done!':c+' / '+H.length+' tasks done';if(c===H.length)confetti()}
-H.forEach(function(p,i){var d=el('div','step',"<label><input type='checkbox'><span><b>Task "+(i+1)+":</b> "+p[0]+"</span></label><details><summary>Tips</summary>"+p[1]+"</details>");d.querySelector('input').onchange=hupd;$('hsteps').appendChild(d)});hupd();
-$('hdate').onchange=function(){var d=Math.ceil((new Date(this.value)-new Date())/864e5);$('hleft').textContent=isNaN(d)?'':d>0?'⏳ '+d+' day'+(d>1?'s':'')+' left':d===0?'⏰ Due today!':'⚠️ The deadline has passed.'};
 
 /* ===== XP, effects ===== */
 var XP=0,LV=[[0,'Cadet'],[40,'Explorer'],[90,'Scientist'],[150,'Guardian'],[220,'Planet Hero 🌍']],cur=0,seen=new WeakSet();
